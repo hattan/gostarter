@@ -1,0 +1,79 @@
+// For format details, see https://aka.ms/devcontainer.json
+{
+	"name": "Fabric API",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/base:ubuntu22.04",
+	// Features to add to the dev container. More info: https://containers.dev/features
+	"features": {
+		"ghcr.io/devcontainers/features/git:1": {
+			"version": "latest"
+		},
+		"ghcr.io/meaningful-ooo/devcontainer-features/fish:1": {},
+		"ghcr.io/devcontainers/features/common-utils:2": {
+			"configureZshAsDefaultShell": true
+		},
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
+		"ghcr.io/stuartleeks/dev-container-features/shell-history:0": {},
+		"ghcr.io/devcontainers/features/dotnet:2": {
+			"version": "8.0",
+			"additionalVersions": "6.0"
+		},
+		"ghcr.io/devcontainers/features/go:1": {},
+		"ghcr.io/devcontainers/features/azure-cli:1": {},
+		"ghcr.io/stuartleeks/dev-container-features/azure-cli-persistence:0": {},
+		"ghcr.io/devcontainers/features/github-cli:1": {},
+		"ghcr.io/joshuanianji/devcontainer-features/github-cli-persistence:1": {},
+		"ghcr.io/ghcr.io/devcontainers/features/powershell:1": {},
+		"ghcr.io/eliises/devcontainer-features/devcontainers-cli:1": {},
+		"ghcr.io/eitsupi/devcontainer-features/jq-likes:2": {
+			"jqVersion": "latest",
+			"yqVersion": "latest",
+			"gojqVersion": "latest",
+			"jaqVersion": "latest"
+		},
+		"ghcr.io/devcontainers-contrib/features/go-task:1": {},
+	},
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+	// "onCreateCommand": {
+	// 	"install-goimports": "task install:goimports"
+	// },
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": {
+		"git-safe-dir": "git config --global --add safe.directory ${containerWorkspaceFolder}"
+	},
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "zsh",
+				"terminal.integrated.defaultProfile.osx": "zsh",
+				"powershell.powerShellAdditionalExePaths": {
+					"pwsh": "/usr/local/bin/pwsh"
+				}
+			},
+			"extensions": [
+				"foxundermoon.shell-format",
+				"redhat.vscode-yaml",
+				"ms-vscode.powershell",
+				"ms-vscode.azurecli",
+				"golang.go",
+				"EditorConfig.EditorConfig",
+				"fnando.linter",
+				"42Crunch.vscode-openapi",
+				"GitHub.vscode-pull-request-github",
+				"GitHub.copilot-chat",
+				"GitHub.codespaces",
+				"GitHub.remotehub",
+				"GitHub.copilot",
+				"GitHub.vscode-github-actions",
+				"ms-vscode.azure-repos",
+				"ms-azure-devops.azure-pipelines",
+				"task.vscode-task"
+			]
+		}
+	},
+	"remoteUser": "vscode",
+	"workspaceFolder": "/workspace",
+	"workspaceMount": "source=${localWorkspaceFolder},target=${containerWorkspaceFolder},type=bind,consistency=cached"
+}
